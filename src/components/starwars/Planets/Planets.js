@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useQuery } from "react-query";
-import StarwarsContext from "../../contexts/starwars/starwarsContext";
-import Spinner from "../layout/Spinner";
+import StarwarsContext from "../../../contexts/starwars/starwarsContext";
+import Spinner from "../../layout/Spinner";
 import Planet from "./Planet";
 
 const Planets = () => {

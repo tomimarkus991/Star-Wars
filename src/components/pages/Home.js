@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import starwarsContext from "../../contexts/starwars/starwarsContext";
-import Planets from "../starwars/Planets";
-import People from "../starwars/People";
+import Planets from "../starwars/Planets/Planets";
+import People from "../starwars/People/People";
 
 const Home = () => {
   const { page } = useContext(starwarsContext);
