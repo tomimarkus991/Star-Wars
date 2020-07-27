@@ -14,8 +14,13 @@ const StarwarsState = ({ children }) => {
   const getPage = (page) => {
     dispatch({ type: GET_PAGE, payload: page });
   };
+
+  const getPlanets = async () => {
+    const res = await fetch("http://swapi.dev/api/planets/");
+    return res.json();
+  };
   return (
-    <StarwarsContext.Provider value={{ page, getPage }}>
+    <StarwarsContext.Provider value={{ page, getPage, getPlanets }}>
       {children}
     </StarwarsContext.Provider>
   );

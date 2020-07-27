@@ -8,8 +8,9 @@ const App = () => {
   return (
     <StarwarsState>
       <div className="App">
-        <Navbar />
         <Container>
+          <h1>Star Wars Info</h1>
+          <Navbar />
           <Home />
         </Container>
       </div>
