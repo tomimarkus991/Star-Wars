@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
-import { Navbar as Navbar2, Button } from "react-bootstrap";
-import starwarsContext from "../../contexts/starwars/starwarsContext";
+import React from "react";
+import { Navbar as Navbar2 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { getPage } = useContext(starwarsContext);
   return (
     <Navbar2>
-      <Button onClick={(e) => getPage(e.target.value)} value="people">
-        People
-      </Button>
-      <Button onClick={(e) => getPage(e.target.value)} value="planets">
-        Planets
-      </Button>
+      <ul>
+        <Link className="navLink" to="/people">
+          <li className="liEl">People</li>
+        </Link>
+        <Link className="navLink" to="/planets">
+          <li className="liEl">Planets</li>
+        </Link>
+      </ul>
     </Navbar2>
   );
 };

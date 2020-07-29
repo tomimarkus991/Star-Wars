@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useQuery } from "react-query";
+import StarwarsContext from "../../../contexts/starwars/starwarsContext";
+import Spinner from "../../layout/Spinner";
 
-const Person = ({ person }) => {
-  const { name, height, hair_color, birth_year, gender } = person;
+const Person = ({ match }) => {
+  const { getPersonData } = useContext(StarwarsContext);
+  const { id } = match.params;
+  const { data, status } = useQuery("getPersonData", () => getPersonData(id));
+
   return (
-    <div className="card">
-      <h3>{name}</h3>
-      <p>Height - {height}</p>
-      <p>Hair Color - {hair_color}</p>
-      <p>Birth Year - {birth_year}</p>
-      <p>Gender - {gender}</p>
+    <div className="content">
+      {status === "loading" && <Spinner />}
+      {status === "error" && "katki"}
+      {status === "success" && (
+        <div className="card">
+          <h3>{data.name}</h3>
+          <p>Height - {data.height}</p>
+          <p>Hair Color - {data.hair_color}</p>
+          <p>Birth Year - {data.birth_year}</p>
+          <p>Gender - {data.gender}</p>
+        </div>
+      )}
     </div>
   );
 };

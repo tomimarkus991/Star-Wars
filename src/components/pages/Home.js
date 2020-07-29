@@ -1,17 +1,7 @@
-import React, { useContext } from "react";
-import starwarsContext from "../../contexts/starwars/starwarsContext";
-import Planets from "../starwars/Planets/Planets";
-import People from "../starwars/People/People";
+import React from "react";
 
 const Home = () => {
-  const { page } = useContext(starwarsContext);
-  return (
-    <div>
-      <div className="content">
-        {page === "planets" ? <Planets /> : <People />}
-      </div>
-    </div>
-  );
+  return <h1>Welcome to STAR WARS</h1>;
 };
 
 export default Home;

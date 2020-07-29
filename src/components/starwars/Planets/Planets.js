@@ -8,7 +8,7 @@ const Planets = () => {
   const { getPlanets } = useContext(StarwarsContext);
   const { data, status } = useQuery("planets", getPlanets);
   return (
-    <div>
+    <div className="content">
       <h2>Planets</h2>
       {status === "loading" && <Spinner />}
       {status === "error" && <div>Error fetching data</div>}

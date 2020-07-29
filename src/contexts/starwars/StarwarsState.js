@@ -28,8 +28,15 @@ const StarwarsState = ({ children }) => {
     return res.json();
   };
 
+  const getPersonData = async (id) => {
+    const res = await fetch(`http://swapi.dev/api/people/${id}`);
+    return res.json();
+  };
+
   return (
-    <StarwarsContext.Provider value={{ page, getPage, getPlanets, getPeople }}>
+    <StarwarsContext.Provider
+      value={{ page, getPage, getPlanets, getPeople, getPersonData }}
+    >
       {children}
     </StarwarsContext.Provider>
   );

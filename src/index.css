@@ -28,6 +28,30 @@ button:hover {
   color: #fff;
   border-color: #fff;
 }
+ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+.navLink {
+  color: #c8c83d;
+  text-decoration: none;
+}
+.liEl {
+  border: 3px solid #ccc;
+  border-radius: 20px;
+  list-style: none;
+  display: inline;
+  background: transparent;
+  margin: 0 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 10px;
+  color: #c8c83d;
+}
+.liEl:hover {
+  color: #ffff57;
+  border-color: #fff;
+}
 .content {
   text-align: left;
 }
@@ -35,17 +59,24 @@ button:hover {
   display: block;
   margin: auto;
 }
+.personLink {
+  text-decoration: none;
+}
 .card {
   padding: 8px 16px;
   background: #1b1b1b;
   margin: 16px 0;
   border-radius: 20px;
+  margin: 10px 0;
+  color: #c8c83d;
+}
+.personName {
+  font-size: 1.5rem;
 }
 .card p {
   margin: 6px 0;
   color: #999;
 }
-.card h3 {
-  margin: 10px 0;
+.card:hover {
   color: #ffff57;
 }
