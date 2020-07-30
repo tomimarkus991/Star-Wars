@@ -6,19 +6,19 @@ import Spinner from "../../layout/Spinner";
 const Person = ({ match }) => {
   const { getPersonData } = useContext(StarwarsContext);
   const { id } = match.params;
-  const { data, status } = useQuery("getPersonData", () => getPersonData(id));
+  const personData = useQuery(["getPersonData", `${id}`], getPersonData);
 
   return (
     <div className="content">
-      {status === "loading" && <Spinner />}
-      {status === "error" && "katki"}
-      {status === "success" && (
+      {personData.status === "loading" && <Spinner />}
+      {personData.status === "error" && "katki"}
+      {personData.status === "success" && (
         <div className="card">
-          <h3>{data.name}</h3>
-          <p>Height - {data.height}</p>
-          <p>Hair Color - {data.hair_color}</p>
-          <p>Birth Year - {data.birth_year}</p>
-          <p>Gender - {data.gender}</p>
+          <h3>{personData.data.name}</h3>
+          <p>Height - {personData.data.height}</p>
+          <p>Hair Color - {personData.data.hair_color}</p>
+          <p>Birth Year - {personData.data.birth_year}</p>
+          <p>Gender - {personData.data.gender}</p>
         </div>
       )}
     </div>

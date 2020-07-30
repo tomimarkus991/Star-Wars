@@ -1,41 +1,37 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import StarwarsContext from "./starwarsContext";
 import StarwarsReducer from "./starwarsReducer";
 
-import { GET_PAGE } from "../types";
-
 const StarwarsState = ({ children }) => {
-  const initialState = {
-    page: "people",
-  };
+  const initialState = {};
   const [state, dispatch] = useReducer(StarwarsReducer, initialState);
-  const { page } = state;
-
-  // Get Page
-  const getPage = (page) => {
-    dispatch({ type: GET_PAGE, payload: page });
-  };
-
-  // Get Planets
-  const getPlanets = async () => {
-    const res = await fetch("http://swapi.dev/api/planets/");
-    return res.json();
-  };
+  const [planetsPage, setPlanetsPage] = useState(1);
 
   // Get People
   const getPeople = async () => {
-    const res = await fetch("http://swapi.dev/api/people/");
+    const res = await fetch(`http://swapi.dev/api/people/?page`);
     return res.json();
   };
 
-  const getPersonData = async (id) => {
+  // Get Planets
+  const getPlanets = async (key, page) => {
+    const res = await fetch(`http://swapi.dev/api/planets/?page=${page}`);
+    return res.json();
+  };
+
+  const getPersonData = async (key, id) => {
     const res = await fetch(`http://swapi.dev/api/people/${id}`);
     return res.json();
   };
-
   return (
     <StarwarsContext.Provider
-      value={{ page, getPage, getPlanets, getPeople, getPersonData }}
+      value={{
+        planetsPage,
+        setPlanetsPage,
+        getPlanets,
+        getPeople,
+        getPersonData,
+      }}
     >
       {children}
     </StarwarsContext.Provider>
